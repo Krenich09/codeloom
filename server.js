@@ -19,7 +19,7 @@ app.post("/comment", async (req, res) => {
         const response = await openai.createChatCompletion({
             model: "gpt-3.5-turbo",
             messages: [{ role: "system", content: "You are a code commenting bot. Please add short comments to each of the provided code. Return the code and the added comments" },
-            { role: "user", content: "Take the following peace of text, if it is a code prompt then add comments to it, if it is a normal text, then tell me it is a normal text:" + codeInput }],
+            { role: "user", content: "Take the following peace of text, if it is a code prompt then add comments to it, if it is a normal text, then tell me by saying 'Invalid Input':" + codeInput }],
         })
 
         const commentedCode = response.data.choices[0].message.content;
